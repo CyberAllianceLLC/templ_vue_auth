@@ -1,0 +1,56 @@
+{
+  "name": "templ_vue",
+  "description": "This is a Vue template example.",
+  "author": "Brian Smith",
+  "private": true,
+  "scripts": {
+    "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
+    "serve": "http-server dist -c 1 -a localhost -P http://localhost:3000/",
+    "dev": "npm-run-all --parallel watchify serve",
+    "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.0",
+    "jsonwebtoken": "^8.2.2",
+    "lodash": "^4.15.0",
+    "moment": "^2.18.1",
+    "nprogress": "^0.2.0",
+    "popper.js": "^1.14.3",
+    "q": "^1.4.1",
+    "toastr": "^2.1.2",
+    "vee-validate": "^2.1.0-beta.2",
+    "vue": "^2.0.3",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2",
+    "browserify-hmr": "^0.3.1",
+    "cross-env": "^5.1.6",
+    "envify": "^4.0.0",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.0",
+    "uglify-js": "^3.4.0",
+    "vueify": "^9.2.4",
+    "watchify": "^3.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
