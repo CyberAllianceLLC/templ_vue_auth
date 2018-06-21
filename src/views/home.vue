@@ -18,7 +18,7 @@
 
         <!-- sign up -->
         <div class="col-md-5 col-xl-3">
-          <v_signup @signedUp="$route.replace('/resendEmail')"></v_signup>
+          <v_signup></v_signup>
         </div>
 
       </div>

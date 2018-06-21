@@ -14,10 +14,30 @@
           <form @submit.prevent="verifyRecoveryEmail()">
 
             <!-- password -->
-            <input v-model="password" v-validate="'required|min:6'" name="password" type="password" placeholder="Password" class="form-control mb-3">
+            <div class="form-group position-relative">
+              <input
+                v-model="password"
+                v-validate="'required|min:6'" ref="password"
+                name="password" data-vv-as="password"
+                :class="{'is-invalid': errors.has('password') && password != ''}"
+                class="form-control" type="password" placeholder="Password">
+              <div class="invalid-tooltip">
+                {{ errors.first('password') }}
+              </div>
+            </div>
 
             <!-- confirm password -->
-            <input v-model="confirmPassword" v-validate="'required|min:6|confirmed:password'" name="confirm_password" type="password" placeholder="Confirm Password" class="form-control mb-3">
+            <div class="form-group position-relative">
+              <input
+                v-model="confirm_password"
+                v-validate="'required|confirmed:password'"
+                name="confirm_password" data-vv-as="confirmed password"
+                :class="{'is-invalid': errors.has('confirm_password') && confirm_password != ''}"
+                class="form-control" type="password" placeholder="Confirm Password">
+              <div class="invalid-tooltip">
+                {{ errors.first('confirm_password') }}
+              </div>
+            </div>
 
             <!-- update button -->
             <button type="submit" class="btn btn-block btn-primary">Update</button>
@@ -36,12 +56,12 @@
     data () {
       return {
         password: '',
-        confirmPassword: ''
+        confirm_password: ''
       }
     },
     methods: {
       verifyRecoveryEmail: function (vm = this) {
-        if(vm.password == vm.confirmPassword){
+        if(!(vm.errors.has('password') || vm.errors.has('confirm_password'))){
           return vm.$store.dispatch('request', {
             url: 'verifyRecoveryEmail',
             query: {
@@ -54,19 +74,12 @@
             return vm.$store.dispatch('clearAll').then(function (data) {
               router.replace('/login');
             });
-
           }).catch(function (error) {
             toastr.error('Failed to update password');
             vm.password = '';
             vm.confirmPassword = '';
           });
-
-        }else{
-          toastr.error('Passwords do not match');
-          vm.password = '';
-          vm.confirmPassword = '';
         }
-
       }
     }
   }

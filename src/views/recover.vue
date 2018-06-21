@@ -13,7 +13,17 @@
           <!-- recover form -->
           <form @submit.prevent="sendRecoveryEmail()">
             <!-- email -->
-            <input v-model="email" v-validate="'required|email'" type="email" placeholder="Email" class="form-control mb-3">
+            <div class="form-group position-relative mb-3">
+              <input
+                v-model="email"
+                v-validate="'required|email'"
+                name="email" data-vv-as="email"
+                :class="{'is-invalid': errors.has('email') && email != ''}"
+                class="form-control" type="email" placeholder="Email">
+              <div class="invalid-tooltip">
+                {{ errors.first('email') }}
+              </div>
+            </div>
 
             <!-- login button -->
             <button type="submit" class="btn btn-block btn-primary">Send</button>
@@ -46,19 +56,19 @@
     },
     methods: {
       sendRecoveryEmail: function (vm = this) {
-        return vm.$store.dispatch('request', {
-          url: 'sendRecoveryEmail',
-          query: {
-            email: vm.email
-          }
-        }).then(function (data) {
-          toastr.success('Recovery email sent');
-          vm.email = '';
-        }).catch(function (error) {
-          toastr.error('Failed to send recovery email');
-          vm.email = '';
-        });
-
+        if(!vm.errors.has('email')){
+          return vm.$store.dispatch('request', {
+            url: 'sendRecoveryEmail',
+            query: {
+              email: vm.email
+            }
+          }).then(function (data) {
+            toastr.success('Recovery email sent');
+            vm.email = '';
+          }).catch(function (error) {
+            toastr.error('Failed to send recovery email');
+          });
+        }
       }
     }
   }

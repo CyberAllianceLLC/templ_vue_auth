@@ -47,8 +47,6 @@
           </div>
         </div>
 
-
-
         <!-- sign up button -->
         <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
 

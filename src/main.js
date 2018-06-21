@@ -29,9 +29,9 @@ Vue.use(VeeValidate);
 
 
 //global components
+Vue.component('v_accordion', require('./views/components/v_accordion.vue'));
 Vue.component('v_signup', require('./views/components/v_signup.vue'));
 Vue.component('v_login', require('./views/components/v_login.vue'));
-Vue.component('v_accordion', require('./views/components/v_accordion.vue'));
 Vue.component('v_user', require('./views/components/v_user.vue'));
 Vue.component('v_settings', require('./views/components/v_settings.vue'));
 Vue.component('v_accessManage', require('./views/components/v_accessManage.vue'));
@@ -72,13 +72,6 @@ var routes = [
       auth: false
     }
   },
-  /*
-  {
-    name: 'resendEmail',
-    path: '/resendEmail/:email',
-    component: require('./views/resendEmail.vue')
-  },
-  */
   {
     name: 'verifyNewEmail',
     path: '/verifyNewEmail/:user_id/:recovery_key/:new_email',
@@ -113,7 +106,7 @@ var routes = [
 //init router
 global.router = new VueRouter({
   routes: routes,
-  mode: 'history',
+  //mode: 'history',
   scrollBehavior: function(to, from, savedPosition) {
     if(savedPosition) {
       return savedPosition
