@@ -13,6 +13,21 @@
   </div>
 </template>
 
+
+<script>
+  export default {
+    mounted: function (vm = this) {
+      //add class to body
+      jQuery('body').addClass('modal-open');
+    },
+    beforeDestroy: function (vm = this) {
+      //add class to body
+      jQuery('body').removeClass('modal-open');
+    },
+  }
+</script>
+
+
 <style lang="scss" rel="stylesheet/scss">
   #v_modal {
     .modal {

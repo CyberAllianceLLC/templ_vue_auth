@@ -4,7 +4,7 @@
     <!-- signup dialog -->
     <div class="row justify-content-center py-5 px-3">
       <div class="col-md-5 col-xl-3">
-        <v_signup></v_signup>
+        <v_signup @signedUp="$router.replace('/login')"></v_signup>
       </div>
     </div>
 

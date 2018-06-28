@@ -10,7 +10,7 @@
 
         <!-- name -->
         <a @click="toggleDetails()">{{ token.name }}</a>
-        <span v-show="token.token_id == $store.getters.authTokenInfo.token_id">(current session)</span>
+        <span v-show="token.token_id == $store.getters.authTokenInfo.token_id" class="text-info">(current session)</span>
 
         <!-- delete icon -->
         <a @click="deleteTokens()" v-show="token.token_id != $store.getters.authTokenInfo.token_id" class="float-right">

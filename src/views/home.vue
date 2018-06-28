@@ -18,7 +18,7 @@
 
         <!-- sign up -->
         <div class="col-md-5 col-xl-3">
-          <v_signup></v_signup>
+          <v_signup @signedUp="$router.replace('/login')"></v_signup>
         </div>
 
       </div>
@@ -41,9 +41,6 @@
         font-size: 72px;
         font-weight: 300;
       }
-    }
-    .key-feature {
-
     }
   }
 </style>

@@ -62,16 +62,17 @@
     </div>
 
     <!-- apiModal -->
-    <v_modal v-if="apiModal" @close="apiModal=false">
+    <v_modal v-if="apiModal" @close="closeApiModal()">
       <div class="modal-header">
         <h5 class="modal-title">API Key</h5>
-        <button @click="apiModal=false" type="button" class="close">&times;</button>
+        <button @click="closeApiModal()" type="button" class="close">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <input v-model="apiKey" @focus="$event.target.select()" class="form-control" type="text" readonly>
+        <small class="form-text text-muted">Copy your API key somewhere secure</small>
       </div>
       <div class="modal-footer">
-        <button @click="apiModal=false" type="button" class="btn btn-outline-secondary">Close</button>
+        <button @click="closeApiModal()" type="button" class="btn btn-outline-secondary">Close</button>
       </div>
     </v_modal>
 
@@ -83,6 +84,7 @@
     data: function () {
       return {
         apiModal: false,
+        apiKey: '',
         tokens: [],
         newApiKeyName: '',
         selectAll: false,
@@ -131,6 +133,7 @@
             }
           }).then(function (data) {
             vm.apiModal = true;
+            vm.apiKey = data.apiToken;
             vm.newApiKeyName = '';
             vm.selectAll = false;
             vm.newApiKeyScope = _.map(vm.newApiKeyScope, function(permission) {
@@ -142,6 +145,10 @@
             toastr.error('Failed to create API key');
           });
         }
+      },
+      closeApiModal: function (vm = this) {
+        vm.apiKey = '';
+        vm.apiModal = false;
       }
     }
   }

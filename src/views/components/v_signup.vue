@@ -94,6 +94,9 @@
             vm.password = '';
             vm.confirm_password = '';
 
+            //signed up message
+            toastr.success('Signed up! Check your email to verify your account');
+
             //signed up
             vm.$emit('signedUp');
           }).catch(function (error) {
