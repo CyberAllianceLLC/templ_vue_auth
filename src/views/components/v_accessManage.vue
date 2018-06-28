@@ -1,28 +1,14 @@
 <template>
   <div id="v_accessManage">
 
-    <!-- sessions -->
+    <!-- browser sessions -->
     <v_accordion>
       <template slot="title">
-        Sessions
+        Browser Sessions
       </template>
       <template slot="content">
         <v_token
           v-for="token in sessionKeys"
-          :key="token.token_id"
-          :token="token"
-          @reRender="getUserTokenInfo()"></v_token>
-      </template>
-    </v_accordion>
-
-    <!-- connected apps -->
-    <v_accordion>
-      <template slot="title">
-        Connected Apps
-      </template>
-      <template slot="content">
-        <v_token
-          v-for="token in appKeys"
           :key="token.token_id"
           :token="token"
           @reRender="getUserTokenInfo()"></v_token>
@@ -43,6 +29,34 @@
       </template>
     </v_accordion>
 
+    <!-- connected apps -->
+    <v_accordion>
+      <template slot="title">
+        Connected Apps
+      </template>
+      <template slot="content">
+        <v_token
+          v-for="token in appKeys"
+          :key="token.token_id"
+          :token="token"
+          @reRender="getUserTokenInfo()"></v_token>
+      </template>
+    </v_accordion>
+
+    <!-- connected clients -->
+    <v_accordion>
+      <template slot="title">
+        Connected Clients
+      </template>
+      <template slot="content">
+        <v_token
+          v-for="token in clientKeys"
+          :key="token.token_id"
+          :token="token"
+          @reRender="getUserTokenInfo()"></v_token>
+      </template>
+    </v_accordion>
+
   </div>
 </template>
 
@@ -55,13 +69,16 @@
     },
     computed: {
       sessionKeys: function (vm = this) {
-        return _.filter(vm.tokens, function(o) { return o.user_id == o.holder && o.type == 'refresh'; });
-      },
-      appKeys: function (vm = this) {
-        return _.filter(vm.tokens, function(o) { return o.user_id != o.holder && o.type == 'refresh'; });
+        return _.filter(vm.tokens, function(o) { return o.user_id === o.holder && o.type === 'refresh'; });
       },
       apiKeys: function (vm = this) {
         return _.filter(vm.tokens, { type: 'api' });
+      },
+      appKeys: function (vm = this) {
+        return _.filter(vm.tokens, function(o) { return o.user_id !== o.holder && o.type === 'refresh' && o.user_id === vm.$store.getters.authTokenInfo.user_id; });
+      },
+      clientKeys: function (vm = this) {
+        return _.filter(vm.tokens, function(o) { return o.user_id !== o.holder && o.type === 'refresh' && o.holder === vm.$store.getters.authTokenInfo.user_id; });
       }
     },
     mounted: function (vm = this) {

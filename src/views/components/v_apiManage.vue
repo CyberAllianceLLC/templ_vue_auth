@@ -1,7 +1,6 @@
 <template>
   <div id="v_apiManage">
     <div class="row">
-
       <!-- new api key -->
       <div class="col-md-6 mb-3 mb-md-0">
         <!-- title -->
@@ -60,8 +59,22 @@
           :token="token"
           @reRender="getUserTokenInfo()"></v_token>
       </div>
-
     </div>
+
+    <!-- apiModal -->
+    <v_modal v-if="apiModal" @close="apiModal=false">
+      <div class="modal-header">
+        <h5 class="modal-title">API Key</h5>
+        <button @click="apiModal=false" type="button" class="close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button @click="apiModal=false" type="button" class="btn btn-outline-secondary">Close</button>
+      </div>
+    </v_modal>
+
   </div>
 </template>
 
@@ -69,6 +82,7 @@
   export default {
     data: function () {
       return {
+        apiModal: false,
         tokens: [],
         newApiKeyName: '',
         selectAll: false,
@@ -116,7 +130,7 @@
               scope: scope
             }
           }).then(function (data) {
-            toastr.success('API key created');
+            vm.apiModal = true;
             vm.newApiKeyName = '';
             vm.selectAll = false;
             vm.newApiKeyScope = _.map(vm.newApiKeyScope, function(permission) {
@@ -136,6 +150,7 @@
 <style lang="scss" rel="stylesheet/scss">
   #v_apiManage {
     .permissions {
+      cursor: pointer;
       max-height: 250px;
       overflow-y: auto;
     }

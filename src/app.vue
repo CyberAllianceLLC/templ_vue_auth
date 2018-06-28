@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- topbar -->
     <nav id="topbar" class="navbar navbar-expand-md navbar-light bg-white py-3">
       <!-- brand -->
@@ -69,7 +68,6 @@
           //redirect to home
           router.replace('/');
         });
-
       }
     }
   }

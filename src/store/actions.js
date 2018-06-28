@@ -4,7 +4,7 @@ var config = require('../../config');
 
 //===== ACTIONS =====
 var actions = {
-  //CHECK: request <url> <query>
+  //DONE: request <url> <query>
   request({ state, commit, getters, dispatch }, data){
     return q.fcall(function () {
       //check if route requires authentication
@@ -46,7 +46,7 @@ var actions = {
     });
   },
 
-  //CHECK: getTokens
+  //DONE: getTokens
   getTokens({ state, commit, getters, dispatch }, data){
     return q.fcall(function () {
       //verify user is logged in
@@ -93,7 +93,7 @@ var actions = {
     });
   },
 
-  //CHECK: setTokens <authToken> <refreshToken> -remember- -authLock-
+  //DONE: setTokens <authToken> <refreshToken> -remember- -authLock-
   setTokens({ state, commit, getters, dispatch }, data){
     return q.fcall(function () {
       //if remember user, store in localstorage

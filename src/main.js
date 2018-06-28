@@ -4,6 +4,7 @@ global.toastr = require('toastr');
 global.nprogress = require('nprogress');
 global._ = require('lodash');
 global.moment = require('moment');
+global.urijs = require('urijs');
 require('bootstrap');
 
 global.config = require('../config.js');
@@ -30,6 +31,7 @@ Vue.use(VeeValidate);
 
 //global components
 Vue.component('v_accordion', require('./views/components/v_accordion.vue'));
+Vue.component('v_modal', require('./views/components/v_modal.vue'));
 Vue.component('v_signup', require('./views/components/v_signup.vue'));
 Vue.component('v_login', require('./views/components/v_login.vue'));
 Vue.component('v_user', require('./views/components/v_user.vue'));
@@ -90,13 +92,11 @@ var routes = [
     path: '/verifyRecoveryEmail/:user_id/:recovery_key',
     component: require('./views/verifyRecoveryEmail.vue')
   },
-  /*
   {
     name: 'oauth',
     path: '/oauth',
     component: require('./views/oauth.vue')
   },
-  */
   {
     path: '*',
     component: require('./views/error.vue')

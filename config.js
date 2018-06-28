@@ -1,6 +1,7 @@
 var config = {
   AUTH_SCOPE: [
-    'newVendorRefreshToken',
+    'newVendorAccessToken',
+    'newVendorAuthToken',
     'newApiToken',
     'getUserTokenInfo',
     'deleteTokens',
@@ -10,10 +11,14 @@ var config = {
     'newPassword'
   ],
   API_SCOPE: [
-    'getUserSettings'
+    'newVendorAccessToken',
+    'newVendorAuthToken',
+    'getUserTokenInfo',
+    'deleteTokens',
+    'getUserInfo'
   ],
   VENDOR_SCOPE: [
-    'getUserSettings'
+    'getUserInfo'
   ]
 };
 

@@ -19,7 +19,6 @@
 </template>
 
 
-
 <style lang="scss" rel="stylesheet/scss">
   #error {
     background-color: #e9ecef;

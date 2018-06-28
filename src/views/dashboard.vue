@@ -49,6 +49,16 @@
               </template>
             </v_accordion>
 
+            <!-- third party apps -->
+            <v_accordion>
+              <template slot="title">
+                <i class="fa fa-plug"></i> Third Party Apps
+              </template>
+              <template slot="content">
+
+              </template>
+            </v_accordion>
+
           </div>
         </div>
       </div>
