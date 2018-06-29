@@ -28,7 +28,6 @@
 
             <!-- authorize buttons -->
             <div class="float-right">
-              <button type="button" class="btn btn-outline-secondary">Cancel</button>
               <button @click="newVendorAccessToken()" type="button" class="btn btn-primary">Authorize</button>
             </div>
 

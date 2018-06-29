@@ -33,7 +33,7 @@
     <p>The vendor exchanges the access token for the user's tokens:</p>
     <textarea class="form-control" rows="5" readonly>
       HEADER authorization: [authToken]
-      POST https://this-server.com/newVendorAuthToken
+      POST https://this-server.com/api/newVendorAuthToken
   accessToken=[accessToken]&
   redirect_uri=[redirect_uri]&
   scope=[scope]</textarea>
