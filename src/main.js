@@ -38,6 +38,7 @@ Vue.component('v_user', require('./views/components/v_user.vue'));
 Vue.component('v_settings', require('./views/components/v_settings.vue'));
 Vue.component('v_accessManage', require('./views/components/v_accessManage.vue'));
 Vue.component('v_apiManage', require('./views/components/v_apiManage.vue'));
+Vue.component('v_appManage', require('./views/components/v_appManage.vue'));
 Vue.component('v_token', require('./views/components/v_token.vue'));
 
 //routes
@@ -106,7 +107,7 @@ var routes = [
 //init router
 global.router = new VueRouter({
   routes: routes,
-  //mode: 'history',
+  mode: 'history',
   scrollBehavior: function(to, from, savedPosition) {
     if(savedPosition) {
       return savedPosition

@@ -24,9 +24,9 @@
       </div>
     </div>
 
-    <!-- key features -->
+    <!-- title bar -->
     <div class="text-center text-light bg-dark p-3">
-      <h2>Key Features</h2>
+      <h2>Get Started Today!</h2>
     </div>
 
   </div>

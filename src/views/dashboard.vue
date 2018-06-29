@@ -55,7 +55,7 @@
                 <i class="fa fa-plug"></i> Third Party Apps
               </template>
               <template slot="content">
-
+                <v_appManage></v_appManage>
               </template>
             </v_accordion>
 

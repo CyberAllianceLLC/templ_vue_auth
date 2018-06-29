@@ -53,7 +53,7 @@
       return {
         error: false,
         name: '',
-        client_id: '',
+        vendor_id: '',
         redirect_uri: '',
         scope: '',
         state: ''
@@ -70,13 +70,13 @@
         }
 
         //set values
-        vm.client_id = vm.$route.query.client_id;
+        vm.vendor_id = vm.$route.query.vendor_id;
         vm.redirect_uri = vm.$route.query.redirect_uri;
         vm.scope = _.intersection(config.VENDOR_SCOPE, _.split(vm.$route.query.scope, ','));
         vm.state = vm.$route.query.state;
 
         //validate data
-        if(!(vm.name && vm.client_id && vm.redirect_uri && vm.scope.length > 0 && vm.state)) throw 'invalid query parameters';
+        if(!(vm.name && vm.vendor_id && vm.redirect_uri && vm.scope.length > 0 && vm.state)) throw 'invalid query parameters';
       }).catch(function (error) {
         vm.error = true;
       });
@@ -86,7 +86,7 @@
         return vm.$store.dispatch('request', {
           url: 'newVendorAccessToken',
           query: {
-            holder: vm.client_id,
+            holder: vm.vendor_id,
             redirect_uri: vm.redirect_uri,
             scope: vm.scope
           }
