@@ -31,12 +31,16 @@
     <h4>Token Exchange</h4>
     <hr/>
     <p>The vendor exchanges the access token for the user's tokens:</p>
-    <textarea class="form-control" rows="5" readonly>
+    <textarea class="form-control" rows="8" readonly>
       HEADER authorization: [authToken]
       POST https://this-server.com/api/newVendorAuthToken
-  accessToken=[accessToken]&
-  redirect_uri=[redirect_uri]&
-  scope=[scope]</textarea>
+      BODY
+      {
+        "accessToken": [accessToken],
+        "redirect_uri": [redirect_uri],
+        "scope": [scope]
+      }
+    </textarea>
     <br/>
     <ul>
       <li><b>authToken</b> - The vendor's authToken generated from the newApiAuthToken endpoint using their API key</li>
