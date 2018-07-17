@@ -56,17 +56,17 @@
     methods: {
       logout: function (vm = this) {
         //delete old token
-        vm.$store.dispatch('request', {
+        return vm.$store.dispatch('request', {
           url: 'deleteTokens',
           query: {
             token_id: [vm.$store.getters.authTokenInfo.token_id]
           }
-        });
-
-        //clear storage
-        vm.$store.dispatch('clearAll').then(function (data) {
-          //redirect to home
-          router.replace('/');
+        }).finally(function() {
+          //clear storage
+          return vm.$store.dispatch('clearAll').then(function (data) {
+            //redirect to home
+            router.replace('/');
+          });
         });
       }
     }
