@@ -10,7 +10,7 @@
           <h1 class="big-title">You build it. <br> They come.</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique risus nec feugiat in fermentum. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan.</p>
           <p>
-            <a class="btn btn-outline-dark" href="#" role="button">
+            <a class="btn btn-outline-dark" href="https://github.com/CyberAllianceLLC/templ_server_auth" role="button">
               <i class="fa fa-lg fa-github"></i> View on Github
             </a>
           </p>

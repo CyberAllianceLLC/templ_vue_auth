@@ -3,7 +3,7 @@
     <!-- topbar -->
     <nav id="topbar" class="navbar navbar-expand-md navbar-light bg-white py-3">
       <!-- brand -->
-      <router-link to="/" class="navbar-brand">Cyber Alliance Template</router-link>
+      <router-link to="/" class="navbar-brand">OAuth Example</router-link>
 
       <!-- links -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topbar-collapse" aria-controls="topbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
         Copyright © {{ new Date().getFullYear() }}, Cyber Alliance, LLC. All Rights Reserved.
       </p>
       <p>
-        <a class="icon" href="#">
+        <a class="icon" href="https://github.com/CyberAllianceLLC/templ_server_auth">
           <i class="fa fa-2x fa-github"></i>
         </a>
       </p>

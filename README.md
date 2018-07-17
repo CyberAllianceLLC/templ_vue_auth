@@ -1,6 +1,8 @@
 # Vue Template
 
-This is a Vue template.
+This is a Vue single page application OAuth template example.  
+  
+Server Side code can be found here: [templ_server_auth](https://github.com/CyberAllianceLLC/templ_server_auth)
 
 ## Build Setup
 
