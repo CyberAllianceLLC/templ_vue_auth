@@ -52,7 +52,7 @@
         <input
           v-model="confirm_new_password"
           v-validate="'required|confirmed:new_password'"
-          name="confirm_new_password" data-vv-as="confirmed password"
+          name="confirm_new_password" data-vv-as="new password"
           :class="{'is-invalid': errors.has('confirm_new_password') && confirm_new_password != ''}"
           class="form-control" type="password" placeholder="Confirm New Password">
         <div class="invalid-tooltip">

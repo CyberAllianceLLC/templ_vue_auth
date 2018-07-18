@@ -4,7 +4,7 @@
     <h4>Authorization</h4>
     <hr/>
     <p>Create a "Log In" link sending the user to:</p>
-    <textarea class="form-control" rows="3" readonly>https://this-server.com/oauth?vendor_id=[vendor_id]&redirect_uri=[redirect_uri]&scope=[scope]&state=[state]</textarea>
+    <textarea class="form-control" rows="3" readonly>https://oauthexample.com/oauth?vendor_id=[vendor_id]&redirect_uri=[redirect_uri]&scope=[scope]&state=[state]</textarea>
     <br/>
     <ul>
       <li><b>vendor_id</b> - The user_id of the vendor who's requesting permission</li>
@@ -15,7 +15,7 @@
     <p>The user sees the authorization prompt</p>
     <img width="100%" src="https://aaronparecki.com/oauth-2-simplified/oauth-authorization-prompt.png"/>
     <p>If the user clicks "Allow," the service redirects the user back to the vendor's site, indicated by the redirect_uri, with an access token</p>
-    <textarea class="form-control" rows="1" readonly>https://vendor-app.com/cb?accessToken=[accessToken]&state=[state]</textarea>
+    <textarea class="form-control" rows="1" readonly>https://redirect-site.com/cb?accessToken=[accessToken]&state=[state]</textarea>
     <br/>
     <ul>
       <li><b>accessToken</b> - The server returns the access token in the query string</li>
@@ -23,7 +23,7 @@
     </ul>
     <p>
       The vendor should first compare this state value to ensure it matches the one it started with.
-      You can typically store the state value in a cookie or session, and compare it when the user comes back.
+      You can typically store the state value in a cookie or localStorage, and compare it when the user comes back.
       This ensures your redirection endpoint isn't able to be tricked into attempting to exchange arbitrary
       access codes.
     </p>
@@ -33,7 +33,7 @@
     <p>The vendor exchanges the access token for the user's tokens:</p>
     <textarea class="form-control" rows="8" readonly>
       HEADER authorization: [authToken]
-      POST https://this-server.com/api/newVendorAuthToken
+      POST https://oauthexample.com/api/newVendorAuthToken
       BODY
       {
         "accessToken": [accessToken],
@@ -48,7 +48,10 @@
       <li><b>redirect_uri</b> - Must be identical to the redirect URI provided in the original link</li>
       <li><b>scope</b> - Must be identical to the scope provided in the original link</li>
     </ul>
-    <p>The server replies with the user's authToken and refreshToken</p>
+    <p>
+      The server replies with the client's authToken and refreshToken for the vendor to use.
+      The vendor can now use the client's authToken and refreshToken to access resources permitted in the scope.
+    </p>
     <a href="https://aaronparecki.com/oauth-2-simplified/">To read more about OAuth 2 protocol, follow this link</a>
 
   </div>

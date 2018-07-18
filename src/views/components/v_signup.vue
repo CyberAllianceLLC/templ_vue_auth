@@ -39,7 +39,7 @@
           <input
             v-model="confirm_password"
             v-validate="'required|confirmed:password'"
-            name="confirm_password" data-vv-as="confirmed password"
+            name="confirm_password" data-vv-as="password"
             :class="{'is-invalid': errors.has('confirm_password') && confirm_password != ''}"
             class="form-control" type="password" placeholder="Confirm Password">
           <div class="invalid-tooltip">
